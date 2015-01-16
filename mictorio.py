@@ -3,30 +3,22 @@
 import unittest
 
 def esta_vazio(mijoes, i):
-    
-    if i == 0 and mijoes[i] == 'o' and mijoes[i+1] == 'o':
-            return True
-    elif (i == len(mijoes)-1) and mijoes[i] == 'o' and mijoes[i-1] == 'o':
-            return True
-    elif (mijoes[i] == 'o' and mijoes[i-1] == 'o' and mijoes[i+1] == 'o'):
+    if i == 0 and mijoes[i:i+2] == 'oo':
+        return True
+    elif i == len(mijoes)-1 and mijoes[i-1:i+1] == 'oo':
+        return True
+    elif mijoes[i-1:i+2] == 'ooo':
         return True
     return False
 
 def mictorio(mijoes):
     mictorios_livres = []
+    if mijoes is None:
+       return []
     
-    if len(mijoes) == 1:
-        if mijoes[0] == 'o':
-            return [0]
-        else:
-            return []
-        
-    if mijoes == 'xoo':
-        return [2]
-    
-    if mijoes == 'xoxo':
-        return []
-    
+    if mijoes == 'o':
+        return [0]
+          
     i=0
     #for i in range(len(mijoes)):
     while(i < len(mijoes)):
@@ -56,7 +48,8 @@ class MictorioTest(unittest.TestCase):
         self.assertEqual([], mictorio('oxoxoxoxo'))
     def test_oxoxoxoxoo(self):
         self.assertEqual([9], mictorio('oxoxoxoxoo'))
-        
+    def test_null(self):
+        self.assertEqual([], mictorio(None))
 
 if __name__ == '__main__':
     unittest.main()
