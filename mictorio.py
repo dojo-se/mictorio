@@ -3,21 +3,26 @@
 import unittest
 
 def esta_vazio(mijoes, i):
-    if i == 0 and mijoes[i:i+2] == 'oo':
-        return True
-    elif i == len(mijoes)-1 and mijoes[i-1:i+1] == 'oo':
-        return True
-    elif mijoes[i-1:i+2] == 'ooo':
-        return True
-    return False
+    li = max(i-1, 0)
+    ls = min(i+2, len(mijoes))
+    
+    return True if mijoes[li:ls] == (ls-li)*'o' else False
+
+    #if i == 0 and mijoes[i:i+2] == 'oo':
+    #    return True
+    #elif i == len(mijoes)-1 and mijoes[i-1:i+1] == 'oo':
+    #    return True
+    #elif mijoes[i-1:i+2] == 'ooo':
+    #    return True
+    #return False
 
 def mictorio(mijoes):
     mictorios_livres = []
     if mijoes is None:
        return []
     
-    if mijoes == 'o':
-        return [0]
+    #if mijoes == 'o':
+    #    return [0]
           
     i=0
     #for i in range(len(mijoes)):
