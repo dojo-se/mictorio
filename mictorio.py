@@ -2,6 +2,16 @@
 
 import unittest
 
+def esta_vazio(mijoes, i):
+    
+    if i == 0 and mijoes[i] == 'o' and mijoes[i+1] == 'o':
+            return True
+    elif (i == len(mijoes)-1) and mijoes[i] == 'o' and mijoes[i-1] == 'o':
+            return True
+    elif (mijoes[i] == 'o' and mijoes[i-1] == 'o' and mijoes[i+1] == 'o'):
+        return True
+    return False
+
 def mictorio(mijoes):
     mictorios_livres = []
     
@@ -20,14 +30,7 @@ def mictorio(mijoes):
     i=0
     #for i in range(len(mijoes)):
     while(i < len(mijoes)):
-        if (i == 0):
-            if mijoes[i] == 'o' and mijoes[i+1] == 'o':
-                mictorios_livres.append(i)
-                i += 1
-        elif (i == len(mijoes)-1):
-            if mijoes[i] == 'o' and mijoes[i-1] == 'o':
-                mictorios_livres.append(i)
-        elif (mijoes[i] == 'o' and mijoes[i-1] == 'o' and mijoes[i+1] == 'o'):
+        if esta_vazio(mijoes, i):
             mictorios_livres.append(i)
             i += 1
         i += 1
