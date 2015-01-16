@@ -50,6 +50,9 @@ class MictorioTest(unittest.TestCase):
         self.assertEqual([2,4], mictorio('xoooo'))
     def test_ooxooxoooxxoo(self):
         self.assertEqual([0,7,12], mictorio('ooxooxoooxxoo'))
+    def test_ooooooooo(self):
+        self.assertEqual([0,2,4,6,8], mictorio('ooooooooo'))
+        
 
 if __name__ == '__main__':
     unittest.main()
