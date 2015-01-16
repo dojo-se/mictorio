@@ -16,8 +16,21 @@ def mictorio(mijoes):
     
     if mijoes == 'xoxo':
         return []
-    #for i, m in enumerate(mijoes):
-    #    if i==0 and m=='o':
+    
+    i=0
+    #for i in range(len(mijoes)):
+    while(i < len(mijoes)):
+        if (i == 0):
+            if mijoes[i] == 'o' and mijoes[i+1] == 'o':
+                mictorios_livres.append(i)
+                i += 1
+        elif (i == len(mijoes)-1):
+            if mijoes[i] == 'o' and mijoes[i-1] == 'o':
+                mictorios_livres.append(i)
+        elif (mijoes[i] == 'o' and mijoes[i-1] == 'o' and mijoes[i+1] == 'o'):
+            mictorios_livres.append(i)
+            i += 1
+        i += 1
            
     return mictorios_livres
 
@@ -30,6 +43,8 @@ class MictorioTest(unittest.TestCase):
         self.assertEqual([], mictorio('x'))
     def test_o(self):
         self.assertEqual([0], mictorio('o'))
+    def test_xoooo(self):
+        self.assertEqual([2,4], mictorio('xoooo'))
 
 if __name__ == '__main__':
     unittest.main()
